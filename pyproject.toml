@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "teaching-sims"
-version = "0.1.0"
-description = "Interactive physics simulations for graduate teaching (phased arrays first)."
+version = "0.2.0"
+description = "Interactive Dear PyGui radar teaching simulations (arrays through SAR)."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }

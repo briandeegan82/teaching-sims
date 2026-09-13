@@ -11,6 +11,8 @@ can run in lecture or self-paced lab.
 | [03 — Pulsed radar ranging](03-pulsed-ranging.md) | `teaching-sims demo pulsed-ranging` | 40–55 min |
 | [04 — Pulse-Doppler / MTI](04-pulse-doppler.md) | `teaching-sims demo pulse-doppler` | 40–55 min |
 | [05 — CFAR detection](05-cfar.md) | `teaching-sims demo cfar` | 35–50 min |
+| [06 — FMCW radar](06-fmcw.md) | `teaching-sims demo fmcw` | 40–55 min |
+| [07 — Stripmap SAR](07-sar.md) | `teaching-sims demo sar` | 40–55 min |
 
 ## Before you start
 
@@ -29,4 +31,4 @@ Tips that apply to every demo:
   curated parameter set and teaching point.
 - Angles are measured from **broadside** (array normal = \(0^\circ\)).
 
-Suggested course order: phased array → beamforming → pulsed ranging → pulse-Doppler → CFAR.
+Suggested course order: phased array → beamforming → pulsed ranging → pulse-Doppler → CFAR → FMCW → SAR.
