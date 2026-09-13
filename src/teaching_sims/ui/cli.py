@@ -14,6 +14,12 @@ TOPIC_ALIASES = {
     "pulsed_ranging": "pulsed_ranging",
     "ranging": "pulsed_ranging",
     "radar-ranging": "pulsed_ranging",
+    "pulse-doppler": "pulse_doppler",
+    "pulse_doppler": "pulse_doppler",
+    "doppler": "pulse_doppler",
+    "mti": "pulse_doppler",
+    "cfar": "cfar",
+    "detection": "cfar",
 }
 
 
@@ -61,6 +67,12 @@ def main(argv: list[str] | None = None) -> int:
     elif topic == "pulsed_ranging":
         from teaching_sims.topics.pulsed_ranging.scenarios import list_scenarios
         from teaching_sims.ui.desktop.pulsed_ranging_app import run_app
+    elif topic == "pulse_doppler":
+        from teaching_sims.topics.pulse_doppler.scenarios import list_scenarios
+        from teaching_sims.ui.desktop.pulse_doppler_app import run_app
+    elif topic == "cfar":
+        from teaching_sims.topics.cfar.scenarios import list_scenarios
+        from teaching_sims.ui.desktop.cfar_app import run_app
     else:
         print(f"unsupported topic: {args.topic}", file=sys.stderr)
         return 1

@@ -14,18 +14,19 @@ pip install -e ".[dev]"
 teaching-sims demo phased-array
 teaching-sims demo beamforming
 teaching-sims demo pulsed-ranging
-teaching-sims demo beamforming --scenario mvdr_adaptive_null
+teaching-sims demo pulse-doppler
+teaching-sims demo cfar
 pytest
 ```
 
 ## Tutorials
 
-Step-by-step teaching guides (principles + experiments):
-
 - [Tutorials index](tutorials/README.md)
 - [01 — Phased-array antennas](tutorials/01-phased-array.md)
 - [02 — Digital beamforming](tutorials/02-beamforming.md)
 - [03 — Pulsed radar ranging](tutorials/03-pulsed-ranging.md)
+- [04 — Pulse-Doppler / MTI](tutorials/04-pulse-doppler.md)
+- [05 — CFAR detection](tutorials/05-cfar.md)
 
 ## Topics
 
@@ -34,7 +35,9 @@ Step-by-step teaching guides (principles + experiments):
 | Phased-array radar (ULA) | interactive + scenarios + lecture polish |
 | Digital beamforming | conventional / null-steer / MVDR + Capon spectrum |
 | Pulsed radar ranging | delay, resolution, LFM compression, PRI ambiguity |
-| SAR / FFT imaging | planned |
+| Pulse-Doppler / MTI | range–Doppler maps, clutter, MTI, velocity ambiguity |
+| CFAR detection | CA / OS / GO / SO on range profiles |
+| FMCW / SAR | planned |
 
 ## Layout
 
@@ -42,35 +45,14 @@ Step-by-step teaching guides (principles + experiments):
 - `src/teaching_sims/topics/<name>/` — physics + lecture scenarios
 - `src/teaching_sims/ui/desktop/` — Dear PyGui apps
 - `tests/` — physics unit tests
+- `tutorials/` — principles + guided experiments
 
-## Phased-array demo
+## Demos
 
 ```bash
 teaching-sims demo phased-array
-teaching-sims demo phased-array --scenario grating_lobes
-```
-
-Controls: \(N\), \(d/\lambda\), steer, RF vs design frequency, phase-shift vs TTD,
-element pattern, phase bits. Presenter mode, array layout, pattern callouts,
-phase-vs-TTD overlay.
-
-## Beamforming demo
-
-```bash
-teaching-sims demo beamforming
-teaching-sims demo beamforming --list-scenarios
-```
-
-Methods: conventional delay-and-sum, deterministic null steering, MVDR/Capon.
-Panels: beampattern, Capon spectrum, weights, eigenvalues of \(R\), analytical SINR.
-Scenarios cover interferer-in-sidelobe, adaptive nulling, resolution, and diagonal loading.
-
-## Pulsed ranging demo
-
-```bash
-teaching-sims demo pulsed-ranging
+teaching-sims demo beamforming --scenario mvdr_adaptive_null
 teaching-sims demo pulsed-ranging --scenario lfm_compression
+teaching-sims demo pulse-doppler --scenario mti_reveals_target
+teaching-sims demo cfar --scenario fixed_vs_cfar_clutter
 ```
-
-Covers echo delay \(\tau=2R/c\), range resolution, LFM pulse compression, matched-filter
-SNR gain, and PRI range ambiguity. Overlay raw \(|r_x|\) vs matched-filter video.

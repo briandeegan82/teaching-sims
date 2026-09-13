@@ -9,6 +9,8 @@ can run in lecture or self-paced lab.
 | [01 — Phased-array antennas](01-phased-array.md) | `teaching-sims demo phased-array` | 45–60 min |
 | [02 — Digital beamforming](02-beamforming.md) | `teaching-sims demo beamforming` | 45–60 min |
 | [03 — Pulsed radar ranging](03-pulsed-ranging.md) | `teaching-sims demo pulsed-ranging` | 40–55 min |
+| [04 — Pulse-Doppler / MTI](04-pulse-doppler.md) | `teaching-sims demo pulse-doppler` | 40–55 min |
+| [05 — CFAR detection](05-cfar.md) | `teaching-sims demo cfar` | 35–50 min |
 
 ## Before you start
 
@@ -27,4 +29,4 @@ Tips that apply to every demo:
   curated parameter set and teaching point.
 - Angles are measured from **broadside** (array normal = \(0^\circ\)).
 
-Suggested course order: phased array → beamforming → pulsed ranging.
+Suggested course order: phased array → beamforming → pulsed ranging → pulse-Doppler → CFAR.
