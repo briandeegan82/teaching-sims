@@ -18,6 +18,15 @@ teaching-sims demo beamforming --scenario mvdr_adaptive_null
 pytest
 ```
 
+## Tutorials
+
+Step-by-step teaching guides (principles + experiments):
+
+- [Tutorials index](tutorials/README.md)
+- [01 — Phased-array antennas](tutorials/01-phased-array.md)
+- [02 — Digital beamforming](tutorials/02-beamforming.md)
+- [03 — Pulsed radar ranging](tutorials/03-pulsed-ranging.md)
+
 ## Topics
 
 | Topic | Status |
