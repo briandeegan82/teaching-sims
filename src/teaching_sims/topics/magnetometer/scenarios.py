@@ -20,7 +20,7 @@ SCENARIOS: dict[str, Scenario] = {
     "level_sweep": Scenario(
         id="level_sweep",
         title="Level yaw sweep",
-        teaching_point="On a level platform, raw atan2(−by, bx) tracks magnetic heading.",
+        teaching_point="On a level platform, raw atan2(-by, bx) tracks magnetic heading.",
         params=MagParams(pitch_deg=0.0, roll_deg=0.0, tilt_compensate=True),
     ),
     "pitched_needs_tc": Scenario(
@@ -52,7 +52,7 @@ SCENARIOS: dict[str, Scenario] = {
     "soft_iron": Scenario(
         id="soft_iron",
         title="Soft-iron distortion",
-        teaching_point="Anisotropic soft-iron scales turn the locus into an ellipse — heading error varies with yaw.",
+        teaching_point="Anisotropic soft-iron scales turn the locus into an ellipse - heading error varies with yaw.",
         params=MagParams(soft_xx=1.3, soft_yy=0.75, soft_xy=0.15, pitch_deg=0.0),
     ),
 }

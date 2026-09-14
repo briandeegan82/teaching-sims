@@ -53,7 +53,7 @@ class CFARApp:
                 targets[0],
                 CFARTarget(int(dpg.get_value("t2_cell")), snr_db=float(dpg.get_value("t2_snr"))),
             )
-        # P_fa from log10 slider: -2 ... -5 → 1e-2 ... 1e-5
+        # P_fa from log10 slider: -2 ... -5 -> 1e-2 ... 1e-5
         pfa = 10 ** float(dpg.get_value("pfa_exp"))
         return CFARParams(
             n_cells=int(dpg.get_value("n_cells")),
@@ -147,7 +147,7 @@ class CFARApp:
         dpg.set_value("power_series", _fxy(cells, pdb))
         # Replace NaN thresholds with a low sentinel so the line breaks visually
         t_plot = np.where(np.isfinite(tdb), tdb, np.nan)
-        # Dear PyGui may not like NaN — use previous finite or floor
+        # Dear PyGui may not like NaN - use previous finite or floor
         t_fill = np.copy(t_plot)
         last = float(np.nanmin(pdb) - 5)
         for i, v in enumerate(t_fill):
@@ -199,7 +199,7 @@ class CFARApp:
                 f"train={p.n_train}/side   guard={p.n_guard}/side\n"
                 f"Hits: {report['hits']}   Misses: {report['misses']}   "
                 f"CFAR FAs: {report['false_alarms']}\n"
-                f"Detections: {report['n_detections']}   α_CA≈{out['alpha_ca']:.2f}"
+                f"Detections: {report['n_detections']}   alpha_CA~{out['alpha_ca']:.2f}"
             ),
         )
         dpg.set_value("banner_title", self._title)
@@ -224,7 +224,7 @@ class CFARApp:
 
     def run(self) -> None:
         dpg.create_context()
-        dpg.create_viewport(title="Teaching Sims — CFAR Detection", width=1480, height=920)
+        dpg.create_viewport(title="Teaching Sims - CFAR Detection", width=1480, height=920)
 
         with dpg.theme() as global_theme:
             with dpg.theme_component(dpg.mvAll):

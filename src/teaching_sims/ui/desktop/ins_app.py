@@ -100,7 +100,7 @@ class INSApp:
             (
                 f"Final position error: {out['final_pos_err_m']:.2f} m\n"
                 f"Perfect attitude: {'ON' if self.params.perfect_attitude else 'OFF'}\n"
-                f"Gyro bias {self.params.gyro_bias_dps:.2f} °/s   "
+                f"Gyro bias {self.params.gyro_bias_dps:.2f}  deg/s   "
                 f"Accel bias x/y {self.params.accel_bias_x_mps2:.3f}/{self.params.accel_bias_y_mps2:.3f}"
             ),
         )
@@ -110,7 +110,7 @@ class INSApp:
 
     def run(self) -> None:
         dpg.create_context()
-        dpg.create_viewport(title="Teaching Sims — Strapdown INS", width=1480, height=920)
+        dpg.create_viewport(title="Teaching Sims - Strapdown INS", width=1480, height=920)
         with dpg.theme() as global_theme:
             with dpg.theme_component(dpg.mvAll):
                 dpg.add_theme_style(dpg.mvStyleVar_FrameRounding, 4)
@@ -142,11 +142,11 @@ class INSApp:
                         min_value=1.0, max_value=15.0, callback=self._on_change,
                     )
                     dpg.add_slider_float(
-                        tag="gyro_bias", label="Gyro bias (°/s)", default_value=self.params.gyro_bias_dps,
+                        tag="gyro_bias", label="Gyro bias (deg/s)", default_value=self.params.gyro_bias_dps,
                         min_value=-1.0, max_value=1.0, callback=self._on_change,
                     )
                     dpg.add_slider_float(
-                        tag="abx", label="Accel bias X (m/s²)", default_value=self.params.accel_bias_x_mps2,
+                        tag="abx", label="Accel bias X (m/s^2)", default_value=self.params.accel_bias_x_mps2,
                         min_value=-0.2, max_value=0.2, callback=self._on_change,
                     )
                     with dpg.group(tag="advanced_controls"):

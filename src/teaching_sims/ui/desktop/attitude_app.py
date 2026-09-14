@@ -87,7 +87,7 @@ class AttitudeApp:
             "status_text",
             (
                 f"quat [w,x,y,z]: [{q[0]:+.3f}, {q[1]:+.3f}, {q[2]:+.3f}, {q[3]:+.3f}]\n"
-                f"Euler←quat (°): yaw {e[0]:.1f}, pitch {e[1]:.1f}, roll {e[2]:.1f}\n"
+                f"Euler<-quat ( deg): yaw {e[0]:.1f}, pitch {e[1]:.1f}, roll {e[2]:.1f}\n"
                 f"det(DCM)={out['det_dcm']:.6f}   "
                 f"near singular samples: {int(np.count_nonzero(out['near_singular']))}"
             ),
@@ -98,7 +98,7 @@ class AttitudeApp:
 
     def run(self) -> None:
         dpg.create_context()
-        dpg.create_viewport(title="Teaching Sims — Attitude", width=1480, height=920)
+        dpg.create_viewport(title="Teaching Sims - Attitude", width=1480, height=920)
         with dpg.theme() as global_theme:
             with dpg.theme_component(dpg.mvAll):
                 dpg.add_theme_style(dpg.mvStyleVar_FrameRounding, 4)
@@ -136,7 +136,7 @@ class AttitudeApp:
                         dpg.add_separator()
                         dpg.add_text("Advanced")
                         dpg.add_slider_float(
-                            tag="scan_amp", label="Scan ±pitch (deg)", default_value=self.params.pitch_scan_deg,
+                            tag="scan_amp", label="Scan +/-pitch (deg)", default_value=self.params.pitch_scan_deg,
                             min_value=30.0, max_value=89.0, callback=self._on_change,
                         )
                     dpg.add_separator()

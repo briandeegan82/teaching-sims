@@ -30,7 +30,7 @@ SCENARIOS: dict[str, Scenario] = {
     ),
     "bias_ramp": Scenario(
         id="bias_ramp",
-        title="Bias → angle ramp",
+        title="Bias -> angle ramp",
         teaching_point="A constant rate bias integrates to a linear angle error (unbounded drift).",
         params=GyroParams(
             profile=MotionProfile.STEP_TURN,
@@ -43,7 +43,7 @@ SCENARIOS: dict[str, Scenario] = {
     "bias_compensated": Scenario(
         id="bias_compensated",
         title="Bias compensated",
-        teaching_point="Subtracting a calibrated bias restores the turn — until the bias changes.",
+        teaching_point="Subtracting a calibrated bias restores the turn - until the bias changes.",
         params=GyroParams(
             profile=MotionProfile.STEP_TURN,
             bias_dps=1.5,
@@ -54,7 +54,7 @@ SCENARIOS: dict[str, Scenario] = {
     "angle_random_walk": Scenario(
         id="angle_random_walk",
         title="Angle random walk",
-        teaching_point="White rate noise integrates to a random-walk angle error (grows like √t).",
+        teaching_point="White rate noise integrates to a random-walk angle error (grows like sqrt(t))..",
         params=GyroParams(
             profile=MotionProfile.CONSTANT,
             rate_dps=0.0,

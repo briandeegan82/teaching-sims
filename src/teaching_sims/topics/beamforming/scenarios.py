@@ -107,7 +107,7 @@ SCENARIOS: dict[str, Scenario] = {
             inr_db=20.0,
             diagonal_loading_db=-10.0,
         ),
-        notes="Toggle loading from −∞ (off) toward 0 dB and watch the null soften.",
+        notes="Toggle loading from -∞ (off) toward 0 dB and watch the null soften.",
     ),
 }
 

@@ -54,7 +54,7 @@ class PulseDopplerApp:
             self._note = f"{sc.teaching_point}\n{sc.notes}"
         else:
             self._title = "Pulse-Doppler / MTI"
-            self._note = "Range–Doppler maps, clutter, two-pulse MTI, and PRF velocity ambiguity."
+            self._note = "Range-Doppler maps, clutter, two-pulse MTI, and PRF velocity ambiguity."
 
     def _read_controls(self) -> PulseDopplerParams:
         targets = (
@@ -166,7 +166,7 @@ class PulseDopplerApp:
         r_disp = np.linspace(float(r[0]), float(r[-1]), RD_COLS)
         v_disp = np.linspace(float(v[0]), float(v[-1]), RD_ROWS)
         # rd rows = Doppler, cols = range
-        # np.interp only 1D — do separable interp
+        # np.interp only 1D - do separable interp
         tmp = np.empty((rd.shape[0], RD_COLS), dtype=float)
         for i in range(rd.shape[0]):
             tmp[i] = np.interp(r_disp, r, rd[i])
@@ -213,7 +213,7 @@ class PulseDopplerApp:
             self._ann(
                 f"ann_t{i}",
                 f"T{i+1} {tgt.range_m/1e3:.2f} km, {tgt.velocity_mps:.0f} m/s"
-                + (f" → {v_app:.0f} m/s" if abs(v_app - tgt.velocity_mps) > 1 else ""),
+                + (f" -> {v_app:.0f} m/s" if abs(v_app - tgt.velocity_mps) > 1 else ""),
                 r_app / 1e3,
                 v_app,
                 (8, -14 if i == 0 else 12),
@@ -224,9 +224,9 @@ class PulseDopplerApp:
             "status_text",
             (
                 f"PRF={p.prf_hz:.0f} Hz   N={p.n_pulses}   f={p.frequency_hz/1e9:.1f} GHz   MTI={mti}\n"
-                f"ΔR≈{out['range_resolution_m']:.1f} m   Δv≈{out['velocity_resolution_mps']:.2f} m/s\n"
-                f"R_unamb≈{out['unambiguous_range_m']/1e3:.2f} km   "
-                f"v_unamb≈±{out['unambiguous_velocity_mps']:.1f} m/s"
+                f"ΔR~{out['range_resolution_m']:.1f} m   Δv~{out['velocity_resolution_mps']:.2f} m/s\n"
+                f"R_unamb~{out['unambiguous_range_m']/1e3:.2f} km   "
+                f"v_unamb~+/-{out['unambiguous_velocity_mps']:.1f} m/s"
             ),
         )
         dpg.set_value("banner_title", self._title)
@@ -237,7 +237,7 @@ class PulseDopplerApp:
 
     def run(self) -> None:
         dpg.create_context()
-        dpg.create_viewport(title="Teaching Sims — Pulse-Doppler / MTI", width=1480, height=960)
+        dpg.create_viewport(title="Teaching Sims - Pulse-Doppler / MTI", width=1480, height=960)
 
         with dpg.theme() as global_theme:
             with dpg.theme_component(dpg.mvAll):
@@ -277,7 +277,7 @@ class PulseDopplerApp:
                     )
                     dpg.add_slider_float(
                         tag="pri_us",
-                        label="PRI (µs)",
+                        label="PRI (us)",
                         default_value=self.params.pri_s * 1e6,
                         min_value=50.0,
                         max_value=400.0,
@@ -365,7 +365,7 @@ class PulseDopplerApp:
                         )
                         dpg.add_slider_float(
                             tag="clutter_width",
-                            label="Clutter σ_v (m/s)",
+                            label="Clutter sigma_v (m/s)",
                             default_value=self.params.clutter_width_mps,
                             min_value=0.2,
                             max_value=8.0,
@@ -416,7 +416,7 @@ class PulseDopplerApp:
 
                 with dpg.child_window(border=False):
                     with dpg.plot(
-                        label="Range–Doppler map (dB, peak-norm.)",
+                        label="Range-Doppler map (dB, peak-norm.)",
                         height=420,
                         width=-1,
                         tag="rd_plot",

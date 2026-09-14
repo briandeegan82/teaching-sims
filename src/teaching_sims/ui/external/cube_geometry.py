@@ -75,7 +75,7 @@ def draw_cube_attitude(ax, yaw_deg: float, pitch_deg: float, roll_deg: float, *,
     ax.set_xlabel("East")
     ax.set_ylabel("North")
     ax.set_zlabel("Up")
-    ax.set_title(f"Yaw {yaw_deg:.0f}°  Pitch {pitch_deg:.0f}°  Roll {roll_deg:.0f}°")
+    ax.set_title(f"Yaw {yaw_deg:.0f} deg  Pitch {pitch_deg:.0f} deg  Roll {roll_deg:.0f} deg")
 
     lim = 1.1
     ax.plot([0, 0], [0, lim], [0, 0], color="0.55", linewidth=1.0, label="N")
@@ -106,18 +106,18 @@ def draw_gyro_heading_compare(
 ) -> None:
     """Compare true vs gyro-integrated heading about Down (Z).
 
-    Truth cube is dark; estimate is orange — the angular mismatch is the
+    Truth cube is dark; estimate is orange - the angular mismatch is the
     teaching signal for bias/ARW drift.
     """
     ax.cla()
     ax.set_xlabel("East")
     ax.set_ylabel("North")
     ax.set_zlabel("Up")
-    title = f"True yaw {yaw_true_deg:.1f}°   Gyro yaw {yaw_est_deg:.1f}°"
+    title = f"True yaw {yaw_true_deg:.1f} deg   Gyro yaw {yaw_est_deg:.1f} deg"
     if t_s is not None:
         title = f"t = {t_s:.2f} s\n" + title
     if err_deg is not None:
-        title += f"   err {err_deg:+.1f}°"
+        title += f"   err {err_deg:+.1f} deg"
     ax.set_title(title)
 
     lim = 1.1
@@ -126,7 +126,7 @@ def draw_gyro_heading_compare(
     ax.plot([0, 0], [0, 0], [0, lim], color="0.55", linewidth=1.0, label="Up")
 
     _draw_wire_cube(ax, yaw_true_deg, 0.0, 0.0, color="0.2", half=0.55, lw=2.0, label="truth")
-    _draw_wire_cube(ax, yaw_est_deg, 0.0, 0.0, color="C1", half=0.42, lw=1.8, label="gyro ∫ω")
+    _draw_wire_cube(ax, yaw_est_deg, 0.0, 0.0, color="C1", half=0.42, lw=1.8, label="gyro int omega")
     _draw_body_x(ax, yaw_true_deg, 0.0, 0.0, color="C0", lim=lim, label="X truth")
     _draw_body_x(ax, yaw_est_deg, 0.0, 0.0, color="C3", lim=0.85 * lim, label="X gyro")
 

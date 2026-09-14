@@ -143,12 +143,12 @@ class AccelApp:
         dpg.set_value(
             "status_text",
             (
-                f"True yaw/roll/pitch: {out['true_yaw_deg']:.1f}° / "
-                f"{out['true_roll_deg']:.1f}° / {out['true_pitch_deg']:.1f}°\n"
-                f"Mean estimate:       {out['roll_mean_deg']:.1f}° / {out['pitch_mean_deg']:.1f}° "
+                f"True yaw/roll/pitch: {out['true_yaw_deg']:.1f} deg / "
+                f"{out['true_roll_deg']:.1f} deg / {out['true_pitch_deg']:.1f} deg\n"
+                f"Mean estimate:       {out['roll_mean_deg']:.1f} deg / {out['pitch_mean_deg']:.1f} deg "
                 f"(accel tilt has no yaw)\n"
-                f"Error:               {out['roll_err_deg']:+.2f}° / {out['pitch_err_deg']:+.2f}°\n"
-                f"Ideal f (m/s²):      [{out['true_f_body'][0]:.2f}, "
+                f"Error:               {out['roll_err_deg']:+.2f} deg / {out['pitch_err_deg']:+.2f} deg\n"
+                f"Ideal f (m/s^2):      [{out['true_f_body'][0]:.2f}, "
                 f"{out['true_f_body'][1]:.2f}, {out['true_f_body'][2]:.2f}]"
                 f"{cube_note}"
             ),
@@ -161,7 +161,7 @@ class AccelApp:
 
     def run(self) -> None:
         dpg.create_context()
-        dpg.create_viewport(title="Teaching Sims — Accelerometer", width=1480, height=920)
+        dpg.create_viewport(title="Teaching Sims - Accelerometer", width=1480, height=920)
         with dpg.theme() as global_theme:
             with dpg.theme_component(dpg.mvAll):
                 dpg.add_theme_style(dpg.mvStyleVar_FrameRounding, 4)
@@ -216,7 +216,7 @@ class AccelApp:
                         )
                         dpg.add_slider_float(
                             tag="ax",
-                            label="Body ax (m/s²)",
+                            label="Body ax (m/s^2)",
                             default_value=self.params.ax_mps2,
                             min_value=-5.0,
                             max_value=5.0,
@@ -227,7 +227,7 @@ class AccelApp:
                             dpg.add_text("Advanced")
                             dpg.add_slider_float(
                                 tag="ay",
-                                label="Body ay (m/s²)",
+                                label="Body ay (m/s^2)",
                                 default_value=self.params.ay_mps2,
                                 min_value=-5.0,
                                 max_value=5.0,
@@ -235,7 +235,7 @@ class AccelApp:
                             )
                             dpg.add_slider_float(
                                 tag="az",
-                                label="Body az (m/s²)",
+                                label="Body az (m/s^2)",
                                 default_value=self.params.az_mps2,
                                 min_value=-5.0,
                                 max_value=5.0,
@@ -267,7 +267,7 @@ class AccelApp:
                             )
                             dpg.add_slider_float(
                                 tag="noise",
-                                label="Noise σ (m/s²)",
+                                label="Noise sigma (m/s^2)",
                                 default_value=self.params.noise_mps2,
                                 min_value=0.0,
                                 max_value=0.5,
@@ -315,7 +315,7 @@ class AccelApp:
                         with dpg.plot(label="Specific force (body)", height=400, width=-1):
                             dpg.add_plot_legend()
                             dpg.add_plot_axis(dpg.mvXAxis, label="t (s)", tag="acc_t")
-                            with dpg.plot_axis(dpg.mvYAxis, label="m/s²", tag="acc_y"):
+                            with dpg.plot_axis(dpg.mvYAxis, label="m/s^2", tag="acc_y"):
                                 dpg.add_line_series([0.0], [0.0], label="fx", tag="fx_series")
                                 dpg.add_line_series([0.0], [0.0], label="fy", tag="fy_series")
                                 dpg.add_line_series([0.0], [0.0], label="fz", tag="fz_series")

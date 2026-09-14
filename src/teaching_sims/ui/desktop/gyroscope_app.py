@@ -41,7 +41,7 @@ class GyroApp:
         else:
             self._title = "Gyroscope / rate integration"
             self._note = (
-                "Integrate ω → θ about Down. Bias ramps heading; ARW wanders. "
+                "Integrate omega -> theta about Down. Bias ramps heading; ARW wanders. "
                 "Use the 3D window to see truth vs gyro cubes diverge."
             )
 
@@ -212,13 +212,13 @@ class GyroApp:
         if self._cube_view.last_error:
             cube_note = f"\n3D window: {self._cube_view.last_error}"
         elif bool(dpg.get_value("show_3d")) if dpg.does_item_exist("show_3d") else False:
-            cube_note = "\n3D: dark=truth, orange=gyro ∫ω (scrub / Play)"
+            cube_note = "\n3D: dark=truth, orange=gyro int omega (scrub / Play)"
 
         dpg.set_value(
             "status_text",
             (
-                f"Bias: {out['bias_dps']:.2f} °/s   σ_rate: {out['sigma_rate_dps']:.3f} °/s\n"
-                f"Final angle error: {out['final_err_deg']:+.2f}°\n"
+                f"Bias: {out['bias_dps']:.2f}  deg/s   sigma_rate: {out['sigma_rate_dps']:.3f}  deg/s\n"
+                f"Final angle error: {out['final_err_deg']:+.2f} deg\n"
                 f"Compensation: {'ON' if self.params.compensate_bias else 'OFF'}"
                 f"{cube_note}"
             ),
@@ -232,7 +232,7 @@ class GyroApp:
 
     def run(self) -> None:
         dpg.create_context()
-        dpg.create_viewport(title="Teaching Sims — Gyroscope", width=1480, height=920)
+        dpg.create_viewport(title="Teaching Sims - Gyroscope", width=1480, height=920)
         with dpg.theme() as global_theme:
             with dpg.theme_component(dpg.mvAll):
                 dpg.add_theme_style(dpg.mvStyleVar_FrameRounding, 4)
@@ -288,7 +288,7 @@ class GyroApp:
                         )
                         dpg.add_slider_float(
                             tag="rate",
-                            label="Rate amp (°/s)",
+                            label="Rate amp (deg/s)",
                             default_value=self.params.rate_dps,
                             min_value=-90.0,
                             max_value=90.0,
@@ -296,7 +296,7 @@ class GyroApp:
                         )
                         dpg.add_slider_float(
                             tag="bias",
-                            label="Bias (°/s)",
+                            label="Bias (deg/s)",
                             default_value=self.params.bias_dps,
                             min_value=-3.0,
                             max_value=3.0,
@@ -304,7 +304,7 @@ class GyroApp:
                         )
                         dpg.add_slider_float(
                             tag="arw",
-                            label="ARW (°/√s)",
+                            label="ARW (deg/sqrt(s))",
                             default_value=self.params.arw_deg_per_sqrt_s,
                             min_value=0.0,
                             max_value=1.0,
@@ -347,7 +347,7 @@ class GyroApp:
                         with dpg.plot(label="Angular rate", height=260, width=-1):
                             dpg.add_plot_legend()
                             dpg.add_plot_axis(dpg.mvXAxis, label="t (s)", tag="rate_t")
-                            with dpg.plot_axis(dpg.mvYAxis, label="°/s", tag="rate_y"):
+                            with dpg.plot_axis(dpg.mvYAxis, label=" deg/s", tag="rate_y"):
                                 dpg.add_line_series([0.0], [0.0], label="true", tag="rate_true")
                                 dpg.add_line_series([0.0], [0.0], label="measured", tag="rate_meas")
                         with dpg.plot(label="Integrated angle", height=260, width=-1):

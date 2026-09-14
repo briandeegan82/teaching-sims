@@ -94,10 +94,10 @@ class MagApp:
         dpg.set_value(
             "status_text",
             (
-                f"At yaw={self.params.yaw_deg:.0f}°: B=[{b[0]:.1f}, {b[1]:.1f}, {b[2]:.1f}] µT\n"
-                f"Heading estimate: {out['snapshot_heading_deg']:.1f}°  "
-                f"err {out['snapshot_err_deg']:+.1f}°\n"
-                f"Sweep RMS heading error: {out['rms_err_deg']:.2f}°"
+                f"At yaw={self.params.yaw_deg:.0f} deg: B=[{b[0]:.1f}, {b[1]:.1f}, {b[2]:.1f}] uT\n"
+                f"Heading estimate: {out['snapshot_heading_deg']:.1f} deg  "
+                f"err {out['snapshot_err_deg']:+.1f} deg\n"
+                f"Sweep RMS heading error: {out['rms_err_deg']:.2f} deg"
             ),
         )
 
@@ -106,7 +106,7 @@ class MagApp:
 
     def run(self) -> None:
         dpg.create_context()
-        dpg.create_viewport(title="Teaching Sims — Magnetometer", width=1480, height=920)
+        dpg.create_viewport(title="Teaching Sims - Magnetometer", width=1480, height=920)
         with dpg.theme() as global_theme:
             with dpg.theme_component(dpg.mvAll):
                 dpg.add_theme_style(dpg.mvStyleVar_FrameRounding, 4)
@@ -142,11 +142,11 @@ class MagApp:
                         min_value=-60.0, max_value=60.0, callback=self._on_change,
                     )
                     dpg.add_slider_float(
-                        tag="hard_x", label="Hard-iron X (µT)", default_value=self.params.hard_x_ut,
+                        tag="hard_x", label="Hard-iron X (uT)", default_value=self.params.hard_x_ut,
                         min_value=-20.0, max_value=20.0, callback=self._on_change,
                     )
                     dpg.add_slider_float(
-                        tag="hard_y", label="Hard-iron Y (µT)", default_value=self.params.hard_y_ut,
+                        tag="hard_y", label="Hard-iron Y (uT)", default_value=self.params.hard_y_ut,
                         min_value=-20.0, max_value=20.0, callback=self._on_change,
                     )
                     with dpg.group(tag="advanced_controls"):
@@ -169,7 +169,7 @@ class MagApp:
                             min_value=-0.4, max_value=0.4, callback=self._on_change,
                         )
                         dpg.add_slider_float(
-                            tag="noise", label="Noise σ (µT)", default_value=self.params.noise_ut,
+                            tag="noise", label="Noise sigma (uT)", default_value=self.params.noise_ut,
                             min_value=0.0, max_value=2.0, callback=self._on_change,
                         )
                     dpg.add_separator()
@@ -187,8 +187,8 @@ class MagApp:
                 with dpg.child_window(border=False):
                     with dpg.plot(label="Horizontal field locus (bx, by)", height=360, width=-1):
                         dpg.add_plot_legend()
-                        dpg.add_plot_axis(dpg.mvXAxis, label="bx (µT)", tag="bx_ax")
-                        with dpg.plot_axis(dpg.mvYAxis, label="by (µT)", tag="by_ax"):
+                        dpg.add_plot_axis(dpg.mvXAxis, label="bx (uT)", tag="bx_ax")
+                        with dpg.plot_axis(dpg.mvYAxis, label="by (uT)", tag="by_ax"):
                             dpg.add_scatter_series([0.0], [0.0], label="yaw sweep", tag="polar")
                     with dpg.plot(label="Heading vs true yaw", height=200, width=-1):
                         dpg.add_plot_legend()

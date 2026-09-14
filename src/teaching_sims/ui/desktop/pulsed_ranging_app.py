@@ -179,7 +179,7 @@ class PulsedRangingApp:
             dpg.configure_item(f"tgt_marker_{i}", show=True)
             label = f"T{i+1} true {tr.range_m/1e3:.2f} km"
             if abs(apparent - tr.range_m) > 1.0:
-                label += f" → {apparent/1e3:.2f} km"
+                label += f" -> {apparent/1e3:.2f} km"
             self._ann(f"ann_t{i}", label, x, max(y, 0.2), (8, -14 if i == 0 else 12))
 
         for i in range(len(p.targets), 2):
@@ -198,7 +198,7 @@ class PulsedRangingApp:
         # Spectro-ish: instantaneous freq of TX for LFM teaching
         if p.waveform == WaveformType.LFM and len(out["tx"]) > 4:
             ph = np.unwrap(np.angle(out["tx"]))
-            # fd ≈ (1/2π) dφ/dt
+            # fd ~ (1/2π) dphi/dt
             fi = np.diff(ph) * p.sample_rate_hz / (2.0 * np.pi)
             ti = out["t_tx_s"][:-1] * 1e6
             dpg.set_value("inst_freq", _fxy(ti, fi / 1e6))
@@ -216,10 +216,10 @@ class PulsedRangingApp:
         dpg.set_value(
             "status_text",
             (
-                f"Waveform: {LABEL_FOR_WAVE[p.waveform]}   Tp={p.pulse_width_s*1e6:.2f} µs   "
-                f"B={p.bandwidth_hz/1e6:.1f} MHz   PRI={p.pri_s*1e6:.1f} µs\n"
-                f"ΔR ≈ {out['range_resolution_m']:.1f} m    "
-                f"R_unamb ≈ {out['max_unambiguous_range_m']/1e3:.2f} km    "
+                f"Waveform: {LABEL_FOR_WAVE[p.waveform]}   Tp={p.pulse_width_s*1e6:.2f} us   "
+                f"B={p.bandwidth_hz/1e6:.1f} MHz   PRI={p.pri_s*1e6:.1f} us\n"
+                f"ΔR ~ {out['range_resolution_m']:.1f} m    "
+                f"R_unamb ~ {out['max_unambiguous_range_m']/1e3:.2f} km    "
                 f"Matched filter: {mf}"
             ),
         )
@@ -231,7 +231,7 @@ class PulsedRangingApp:
 
     def run(self) -> None:
         dpg.create_context()
-        dpg.create_viewport(title="Teaching Sims — Pulsed Radar Ranging", width=1480, height=960)
+        dpg.create_viewport(title="Teaching Sims - Pulsed Radar Ranging", width=1480, height=960)
 
         with dpg.theme() as global_theme:
             with dpg.theme_component(dpg.mvAll):
@@ -277,7 +277,7 @@ class PulsedRangingApp:
                     )
                     dpg.add_slider_float(
                         tag="tp_us",
-                        label="Pulse width Tp (µs)",
+                        label="Pulse width Tp (us)",
                         default_value=self.params.pulse_width_s * 1e6,
                         min_value=0.2,
                         max_value=40.0,
@@ -327,7 +327,7 @@ class PulsedRangingApp:
                         )
                         dpg.add_slider_float(
                             tag="pri_us",
-                            label="PRI (µs)",
+                            label="PRI (us)",
                             default_value=self.params.pri_s * 1e6,
                             min_value=20.0,
                             max_value=400.0,
@@ -411,7 +411,7 @@ class PulsedRangingApp:
                     with dpg.group(horizontal=True):
                         with dpg.plot(label="TX baseband (I/Q)", height=280, width=700):
                             dpg.add_plot_legend()
-                            dpg.add_plot_axis(dpg.mvXAxis, label="t (µs)", tag="tx_x")
+                            dpg.add_plot_axis(dpg.mvXAxis, label="t (us)", tag="tx_x")
                             with dpg.plot_axis(dpg.mvYAxis, label="amp", tag="tx_y"):
                                 dpg.add_line_series([0.0], [0.0], label="I", tag="tx_i")
                                 dpg.add_line_series([0.0], [0.0], label="Q", tag="tx_q")
@@ -423,7 +423,7 @@ class PulsedRangingApp:
                             tag="inst_freq_plot",
                             show=False,
                         ):
-                            dpg.add_plot_axis(dpg.mvXAxis, label="t (µs)", tag="if_x")
+                            dpg.add_plot_axis(dpg.mvXAxis, label="t (us)", tag="if_x")
                             with dpg.plot_axis(dpg.mvYAxis, label="f (MHz)", tag="if_y"):
                                 dpg.add_line_series([0.0], [0.0], label="f_i(t)", tag="inst_freq")
 

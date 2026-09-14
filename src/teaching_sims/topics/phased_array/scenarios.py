@@ -32,19 +32,19 @@ SCENARIOS: dict[str, Scenario] = {
         teaching_point="A progressive phase shift steers the main lobe without moving the array.",
         params=ArrayParams(n_elements=8, d_over_lambda=0.5, steer_deg=-20.0),
         animate_steer=True,
-        notes="Slider / auto-sweep the steer angle; peak tracks φ = −kd sinθ₀.",
+        notes="Slider / auto-sweep the steer angle; peak tracks phi = -kd sintheta₀.",
     ),
     "grating_lobes": Scenario(
         id="grating_lobes",
         title="Grating lobes (d > λ/2)",
-        teaching_point="Spacing above λ/2 aliases the spatial frequency → extra main beams.",
+        teaching_point="Spacing above λ/2 aliases the spatial frequency -> extra main beams.",
         params=ArrayParams(n_elements=8, d_over_lambda=0.9, steer_deg=25.0),
         notes="Compare with d/λ=0.5 at the same steer angle.",
     ),
     "beamwidth_vs_n": Scenario(
         id="beamwidth_vs_n",
         title="Beamwidth vs aperture",
-        teaching_point="Larger N (larger aperture) narrows the main beam ≈ 0.886 λ/(N d).",
+        teaching_point="Larger N (larger aperture) narrows the main beam ~ 0.886 λ/(N d).",
         params=ArrayParams(n_elements=4, d_over_lambda=0.5, steer_deg=0.0),
         animate_n=True,
         notes="Auto-grows N so students see HPBW shrink.",
@@ -73,7 +73,7 @@ SCENARIOS: dict[str, Scenario] = {
             steer_deg=30.0,
             phase_bits=2,
         ),
-        notes="Raise bits from 2→3→4 and watch spurious lobes drop.",
+        notes="Raise bits from 2->3->4 and watch spurious lobes drop.",
     ),
 }
 

@@ -164,7 +164,7 @@ class FMCWApp:
         dpg.set_axis_limits("rp_x", 0.0, r_max)
         dpg.set_axis_limits("rp_y", -40.0, 1.0)
 
-        # RD heatmap (rows=Doppler, cols=range) — interpolate to fixed grid
+        # RD heatmap (rows=Doppler, cols=range) - interpolate to fixed grid
         rd = out["rd_db"]
         v = out["velocity_mps"]
         # rd cols match rfftfreq length = len(r)
@@ -207,13 +207,13 @@ class FMCWApp:
         if out["sawtooth_bias"] is not None and p.waveform == FMCWWaveform.SAWTOOTH:
             sb = out["sawtooth_bias"]
             extra += (
-                f"\nSawtooth beat→range: {sb['range_from_beat_m']:.2f} m "
+                f"\nSawtooth beat->range: {sb['range_from_beat_m']:.2f} m "
                 f"(true {sb['true_range_m']:.2f} m, v={sb['true_velocity_mps']:.1f} m/s)"
             )
         if out["triangle"] is not None and p.waveform == FMCWWaveform.TRIANGLE:
             tr = out["triangle"]
             extra += (
-                f"\nTriangle solve: R≈{tr['range_m']:.2f} m, v≈{tr['velocity_mps']:.2f} m/s "
+                f"\nTriangle solve: R~{tr['range_m']:.2f} m, v~{tr['velocity_mps']:.2f} m/s "
                 f"(fb↑={tr['fb_up_hz']/1e3:.1f} kHz, fb↓={tr['fb_down_hz']/1e3:.1f} kHz)"
             )
 
@@ -221,10 +221,10 @@ class FMCWApp:
             "status_text",
             (
                 f"{LABEL_FOR_WAVE[p.waveform]}   B={p.bandwidth_hz/1e6:.0f} MHz   "
-                f"T={p.chirp_time_s*1e6:.1f} µs   N={p.n_chirps}   fc={p.center_freq_hz/1e9:.1f} GHz\n"
-                f"ΔR≈{out['range_resolution_m']:.2f} m   R_max≈{out['max_unambiguous_range_m']:.1f} m   "
-                f"Δv≈{out['velocity_resolution_mps']:.2f} m/s   "
-                f"v_unamb≈±{out['unambiguous_velocity_mps']:.1f} m/s"
+                f"T={p.chirp_time_s*1e6:.1f} us   N={p.n_chirps}   fc={p.center_freq_hz/1e9:.1f} GHz\n"
+                f"ΔR~{out['range_resolution_m']:.2f} m   R_max~{out['max_unambiguous_range_m']:.1f} m   "
+                f"Δv~{out['velocity_resolution_mps']:.2f} m/s   "
+                f"v_unamb~+/-{out['unambiguous_velocity_mps']:.1f} m/s"
                 f"{extra}"
             ),
         )
@@ -236,7 +236,7 @@ class FMCWApp:
 
     def run(self) -> None:
         dpg.create_context()
-        dpg.create_viewport(title="Teaching Sims — FMCW Radar", width=1480, height=960)
+        dpg.create_viewport(title="Teaching Sims - FMCW Radar", width=1480, height=960)
 
         with dpg.theme() as global_theme:
             with dpg.theme_component(dpg.mvAll):
@@ -277,7 +277,7 @@ class FMCWApp:
                     )
                     dpg.add_slider_float(
                         tag="t_chirp_us",
-                        label="Chirp time T (µs)",
+                        label="Chirp time T (us)",
                         default_value=self.params.chirp_time_s * 1e6,
                         min_value=10.0,
                         max_value=100.0,
@@ -411,7 +411,7 @@ class FMCWApp:
                                 dpg.add_line_series([0.0], [0.0], label="profile", tag="range_prof")
 
                     with dpg.plot(
-                        label="FMCW range–Doppler map",
+                        label="FMCW range-Doppler map",
                         height=420,
                         width=-1,
                         tag="rd_plot",

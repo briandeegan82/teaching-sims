@@ -72,7 +72,7 @@ def main() -> int:
 
     fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
     if fig.canvas.manager is not None:
-        fig.canvas.manager.set_window_title("Teaching Sims — 3D attitude")
+        fig.canvas.manager.set_window_title("Teaching Sims - 3D attitude")
 
     draw_cube_attitude(ax, 0.0, 0.0, 0.0)
 

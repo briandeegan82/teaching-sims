@@ -165,10 +165,10 @@ class BeamformingApp:
         vline("intf_marker", p.interferer_deg, p.interferer_enabled)
 
         self._clear_annotations()
-        self._ann("ann_look", f"look {p.look_deg:.1f}°", p.look_deg, 0.0, (8, -16))
+        self._ann("ann_look", f"look {p.look_deg:.1f} deg", p.look_deg, 0.0, (8, -16))
         if p.interferer_enabled:
             y_i = float(np.interp(p.interferer_deg, THETA, pdb))
-            self._ann("ann_intf", f"interferer {p.interferer_deg:.1f}°", p.interferer_deg, y_i, (8, 12))
+            self._ann("ann_intf", f"interferer {p.interferer_deg:.1f} deg", p.interferer_deg, y_i, (8, 12))
 
         # Weights
         mag = np.abs(w)
@@ -203,9 +203,9 @@ class BeamformingApp:
                 f"snapshots={p.n_snapshots}   loading={load_txt}\n"
                 f"Analytical SINR: {sinr:.1f} dB"
                 + (f"   (conventional would be {sinr_c:.1f} dB)" if p.method != BeamformerMethod.CONVENTIONAL else "")
-                + f"\nSOI {p.signal_deg:.1f}° @ SNR {p.snr_db:.0f} dB"
+                + f"\nSOI {p.signal_deg:.1f} deg @ SNR {p.snr_db:.0f} dB"
                 + (
-                    f"   |   interferer {p.interferer_deg:.1f}° @ INR {p.inr_db:.0f} dB"
+                    f"   |   interferer {p.interferer_deg:.1f} deg @ INR {p.inr_db:.0f} dB"
                     if p.interferer_enabled
                     else "   |   no interferer"
                 )
@@ -219,7 +219,7 @@ class BeamformingApp:
 
     def run(self) -> None:
         dpg.create_context()
-        dpg.create_viewport(title="Teaching Sims — Digital Beamforming", width=1480, height=980)
+        dpg.create_viewport(title="Teaching Sims - Digital Beamforming", width=1480, height=980)
 
         with dpg.theme() as global_theme:
             with dpg.theme_component(dpg.mvAll):
@@ -278,7 +278,7 @@ class BeamformingApp:
                     )
                     dpg.add_slider_float(
                         tag="look_deg",
-                        label="Look θ (deg)",
+                        label="Look theta (deg)",
                         default_value=self.params.look_deg,
                         min_value=-60.0,
                         max_value=60.0,
@@ -286,7 +286,7 @@ class BeamformingApp:
                     )
                     dpg.add_slider_float(
                         tag="signal_deg",
-                        label="SOI θ (deg)",
+                        label="SOI theta (deg)",
                         default_value=self.params.signal_deg,
                         min_value=-60.0,
                         max_value=60.0,
@@ -300,7 +300,7 @@ class BeamformingApp:
                     )
                     dpg.add_slider_float(
                         tag="interferer_deg",
-                        label="Interferer θ (deg)",
+                        label="Interferer theta (deg)",
                         default_value=self.params.interferer_deg,
                         min_value=-60.0,
                         max_value=60.0,
@@ -336,7 +336,7 @@ class BeamformingApp:
                         )
                         dpg.add_slider_float(
                             tag="null_deg",
-                            label="Null-steer θ (deg)",
+                            label="Null-steer theta (deg)",
                             default_value=self.params.null_deg,
                             min_value=-60.0,
                             max_value=60.0,
@@ -371,13 +371,13 @@ class BeamformingApp:
 
                 with dpg.child_window(border=False):
                     with dpg.plot(
-                        label="Beampattern |wᴴa(θ)|² (dB)",
+                        label="Beampattern |w^H a(theta)|^2 (dB)",
                         height=300,
                         width=-1,
                         tag="bf_pattern_plot",
                     ):
                         dpg.add_plot_legend()
-                        dpg.add_plot_axis(dpg.mvXAxis, label="θ (deg)", tag="bf_x")
+                        dpg.add_plot_axis(dpg.mvXAxis, label="theta (deg)", tag="bf_x")
                         dpg.set_axis_limits("bf_x", -90, 90)
                         with dpg.plot_axis(dpg.mvYAxis, label="dB", tag="bf_y"):
                             dpg.set_axis_limits("bf_y", -50, 1)
@@ -396,7 +396,7 @@ class BeamformingApp:
 
                     with dpg.group(horizontal=True):
                         with dpg.plot(label="Capon / MVDR spectrum", height=250, width=520):
-                            dpg.add_plot_axis(dpg.mvXAxis, label="θ (deg)")
+                            dpg.add_plot_axis(dpg.mvXAxis, label="theta (deg)")
                             dpg.set_axis_limits(dpg.last_item(), -90, 90)
                             with dpg.plot_axis(dpg.mvYAxis, label="dB"):
                                 dpg.set_axis_limits(dpg.last_item(), -40, 1)

@@ -29,7 +29,7 @@ ARRAY_DRAW_H = 150
 
 
 def _phase_to_rgb(phase_rad: float) -> tuple[int, int, int]:
-    """Map phase to a saturated hue (HSV → RGB bytes)."""
+    """Map phase to a saturated hue (HSV -> RGB bytes)."""
     h = (np.rad2deg(phase_rad) % 360.0) / 60.0
     i = int(np.floor(h)) % 6
     f = h - np.floor(h)
@@ -223,7 +223,7 @@ class PhasedArrayApp:
                 thickness=1,
                 parent="array_draw",
             )
-            # Phase phasor arrow (0° = +x for visual variety of progressive phase)
+            # Phase phasor arrow (0 deg = +x for visual variety of progressive phase)
             dx = arrow_len * np.cos(ph)
             dy = -arrow_len * np.sin(ph)
             dpg.draw_arrow(
@@ -243,7 +243,7 @@ class PhasedArrayApp:
                     parent="array_draw",
                 )
 
-        # Steer cue (from array center toward commanded θ₀; up = broadside)
+        # Steer cue (from array center toward commanded theta₀; up = broadside)
         steer = np.deg2rad(p.steer_deg)
         cx, cy = ARRAY_DRAW_W * 0.5, y0 - 10
         length = 55.0
@@ -259,7 +259,7 @@ class PhasedArrayApp:
         )
         dpg.draw_text(
             (10, ARRAY_DRAW_H - 22),
-            f"steer θ₀ = {p.steer_deg:.1f}°   N = {p.n_elements}   d/λ = {p.d_over_lambda:.2f}",
+            f"steer theta₀ = {p.steer_deg:.1f} deg   N = {p.n_elements}   d/λ = {p.d_over_lambda:.2f}",
             color=(210, 210, 220, 255),
             size=13,
             parent="array_draw",
@@ -307,7 +307,7 @@ class PhasedArrayApp:
         self._clear_annotations()
         self._add_annotation(
             "ann_main",
-            f"main {feat.main_peak_deg:.1f}°",
+            f"main {feat.main_peak_deg:.1f} deg",
             feat.main_peak_deg,
             float(np.interp(feat.main_peak_deg, THETA, pdb)),
             offset=(10, -18),
@@ -315,7 +315,7 @@ class PhasedArrayApp:
         for i, g in enumerate(feat.grating_peaks_deg[:3]):
             self._add_annotation(
                 f"ann_grat_{i}",
-                f"grating {g:.1f}°",
+                f"grating {g:.1f} deg",
                 g,
                 float(np.interp(g, THETA, pdb)),
                 offset=(10, 14),
@@ -358,14 +358,14 @@ class PhasedArrayApp:
         if self._compare_ttd:
             p_ttd = replace(p, steering_mode=SteeringMode.TRUE_TIME_DELAY)
             compare_note = (
-                f"\nCompare: phase peak≈{peak:.1f}° vs TTD peak≈{peak_angle_deg(p_ttd):.1f}°"
+                f"\nCompare: phase peak~{peak:.1f} deg vs TTD peak~{peak_angle_deg(p_ttd):.1f} deg"
             )
         dpg.set_value(
             "status_text",
             (
                 f"N={p.n_elements}  d/λ_design={p.d_over_lambda:.2f}  "
-                f"f={p.frequency_hz/1e9:.2f} GHz  steer={p.steer_deg:.1f}°\n"
-                f"Peak ≈ {peak:.1f}°   HPBW ≈ {hpbw:.1f}°\n"
+                f"f={p.frequency_hz/1e9:.2f} GHz  steer={p.steer_deg:.1f} deg\n"
+                f"Peak ~ {peak:.1f} deg   HPBW ~ {hpbw:.1f} deg\n"
                 f"{hint}{compare_note}"
             ),
         )
@@ -405,7 +405,7 @@ class PhasedArrayApp:
     def run(self) -> None:
         dpg.create_context()
         dpg.configure_app(docking=False)
-        dpg.create_viewport(title="Teaching Sims — Phased Array Radar", width=1480, height=920)
+        dpg.create_viewport(title="Teaching Sims - Phased Array Radar", width=1480, height=920)
 
         with dpg.theme() as global_theme:
             with dpg.theme_component(dpg.mvAll):
@@ -466,7 +466,7 @@ class PhasedArrayApp:
                     )
                     dpg.add_slider_float(
                         tag="steer_deg",
-                        label="Steer θ₀ (deg)",
+                        label="Steer theta₀ (deg)",
                         default_value=self.params.steer_deg,
                         min_value=-60.0,
                         max_value=60.0,
@@ -518,7 +518,7 @@ class PhasedArrayApp:
                         )
                         dpg.add_checkbox(
                             tag="element_pattern",
-                            label="cosθ element pattern",
+                            label="costheta element pattern",
                             default_value=self.params.element_pattern,
                             callback=self._on_change,
                         )
@@ -565,9 +565,9 @@ class PhasedArrayApp:
                         tag="pattern_plot",
                     ):
                         dpg.add_plot_legend()
-                        dpg.add_plot_axis(dpg.mvXAxis, label="θ (deg)", tag="pat_x")
+                        dpg.add_plot_axis(dpg.mvXAxis, label="theta (deg)", tag="pat_x")
                         dpg.set_axis_limits("pat_x", -90, 90)
-                        with dpg.plot_axis(dpg.mvYAxis, label="|AF|² (dB)", tag="pat_y"):
+                        with dpg.plot_axis(dpg.mvYAxis, label="|AF|^2 (dB)", tag="pat_y"):
                             dpg.set_axis_limits("pat_y", -40, 1)
                             dpg.add_line_series(
                                 list(THETA),
@@ -623,7 +623,7 @@ class PhasedArrayApp:
                                 dpg.add_line_series(
                                     [0.0],
                                     [0.0],
-                                    label="φ_n",
+                                    label="phi_n",
                                     tag="phase_series",
                                 )
 

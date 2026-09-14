@@ -46,7 +46,7 @@ SCENARIOS: dict[str, Scenario] = {
                 Target(2150.0, snr_db=28.0),
             ),
         ),
-        notes="Resolution ≈ 300 m here — targets are only 150 m apart.",
+        notes="Resolution ~ 300 m here - targets are only 150 m apart.",
     ),
     "resolved_pair": Scenario(
         id="resolved_pair",
@@ -62,12 +62,12 @@ SCENARIOS: dict[str, Scenario] = {
                 Target(2150.0, snr_db=26.0),
             ),
         ),
-        notes="Same geometry as the unresolved case; now ΔR ≈ 60 m.",
+        notes="Same geometry as the unresolved case; now ΔR ~ 60 m.",
     ),
     "lfm_compression": Scenario(
         id="lfm_compression",
         title="LFM pulse compression",
-        teaching_point="A long LFM pulse can still resolve finely after matched filtering (≈ c/2B).",
+        teaching_point="A long LFM pulse can still resolve finely after matched filtering (~ c/2B).",
         params=PulseRadarParams(
             waveform=WaveformType.LFM,
             pulse_width_s=20e-6,
@@ -89,11 +89,11 @@ SCENARIOS: dict[str, Scenario] = {
         params=PulseRadarParams(
             waveform=WaveformType.RECT,
             pulse_width_s=0.5e-6,
-            pri_s=50e-6,  # R_unamb ≈ 7.5 km
+            pri_s=50e-6,  # R_unamb ~ 7.5 km
             matched_filter=True,
-            targets=(Target(10000.0, snr_db=28.0),),  # true 10 km → folds
+            targets=(Target(10000.0, snr_db=28.0),),  # true 10 km -> folds
         ),
-        notes="True range 10 km; unambiguous window ≈ 7.5 km — peak is a PRI alias.",
+        notes="True range 10 km; unambiguous window ~ 7.5 km - peak is a PRI alias.",
     ),
     "matched_filter_gain": Scenario(
         id="matched_filter_gain",

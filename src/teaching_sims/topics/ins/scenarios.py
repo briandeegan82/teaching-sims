@@ -35,7 +35,7 @@ SCENARIOS: dict[str, Scenario] = {
     "accel_bias_straight": Scenario(
         id="accel_bias_straight",
         title="Accel bias on straight path",
-        teaching_point="Constant accel bias → velocity ramp → quadratic position growth.",
+        teaching_point="Constant accel bias -> velocity ramp -> quadratic position growth.",
         params=INSParams(
             profile=PathProfile.STRAIGHT,
             perfect_attitude=True,
@@ -49,7 +49,7 @@ SCENARIOS: dict[str, Scenario] = {
     "gyro_bias_circle": Scenario(
         id="gyro_bias_circle",
         title="Gyro bias on a circle",
-        teaching_point="Heading drift points the velocity vector wrong — path spirals away.",
+        teaching_point="Heading drift points the velocity vector wrong - path spirals away.",
         params=INSParams(
             profile=PathProfile.CIRCLE,
             perfect_attitude=False,
@@ -62,7 +62,7 @@ SCENARIOS: dict[str, Scenario] = {
     "both_errors": Scenario(
         id="both_errors",
         title="Gyro + accel errors",
-        teaching_point="Real IMUs combine attitude drift and specific-force bias — errors compound.",
+        teaching_point="Real IMUs combine attitude drift and specific-force bias - errors compound.",
         params=INSParams(
             profile=PathProfile.CIRCLE,
             gyro_bias_dps=0.25,
@@ -73,7 +73,7 @@ SCENARIOS: dict[str, Scenario] = {
     "stop_and_go": Scenario(
         id="stop_and_go",
         title="Stop-and-go",
-        teaching_point="During stops, accel bias still integrates — parked vehicles still 'drift' in unaided INS.",
+        teaching_point="During stops, accel bias still integrates - parked vehicles still 'drift' in unaided INS.",
         params=INSParams(
             profile=PathProfile.STOP_AND_GO,
             perfect_attitude=True,
@@ -85,7 +85,7 @@ SCENARIOS: dict[str, Scenario] = {
     "quiet_ins": Scenario(
         id="quiet_ins",
         title="Quiet tactical IMU",
-        teaching_point="Lower biases shrink short-term error — but unaided INS still diverges eventually.",
+        teaching_point="Lower biases shrink short-term error - but unaided INS still diverges eventually.",
         params=INSParams(
             profile=PathProfile.CIRCLE,
             gyro_bias_dps=0.05,

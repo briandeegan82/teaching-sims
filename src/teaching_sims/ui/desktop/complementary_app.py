@@ -98,8 +98,8 @@ class ComplementaryApp:
         dpg.set_value(
             "status_text",
             (
-                f"α={self.params.alpha:.3f}\n"
-                f"RMS error (°): gyro {out['rms_gyro_deg']:.2f}  "
+                f"alpha={self.params.alpha:.3f}\n"
+                f"RMS error ( deg): gyro {out['rms_gyro_deg']:.2f}  "
                 f"accel {out['rms_accel_deg']:.2f}  comp {out['rms_comp_deg']:.2f}"
             ),
         )
@@ -109,7 +109,7 @@ class ComplementaryApp:
 
     def run(self) -> None:
         dpg.create_context()
-        dpg.create_viewport(title="Teaching Sims — Complementary Filter", width=1480, height=920)
+        dpg.create_viewport(title="Teaching Sims - Complementary Filter", width=1480, height=920)
         with dpg.theme() as global_theme:
             with dpg.theme_component(dpg.mvAll):
                 dpg.add_theme_style(dpg.mvStyleVar_FrameRounding, 4)
@@ -133,7 +133,7 @@ class ComplementaryApp:
                         default_value=LABEL_FOR_MOTION[self.params.motion], callback=self._on_change,
                     )
                     dpg.add_slider_float(
-                        tag="alpha", label="α (gyro weight)", default_value=self.params.alpha,
+                        tag="alpha", label="alpha (gyro weight)", default_value=self.params.alpha,
                         min_value=0.0, max_value=1.0, callback=self._on_change,
                     )
                     dpg.add_slider_float(
@@ -141,11 +141,11 @@ class ComplementaryApp:
                         min_value=5.0, max_value=60.0, callback=self._on_change,
                     )
                     dpg.add_slider_float(
-                        tag="gyro_bias", label="Gyro bias (°/s)", default_value=self.params.gyro_bias_dps,
+                        tag="gyro_bias", label="Gyro bias (deg/s)", default_value=self.params.gyro_bias_dps,
                         min_value=-3.0, max_value=3.0, callback=self._on_change,
                     )
                     dpg.add_slider_float(
-                        tag="surge", label="Surge (m/s²)", default_value=self.params.surge_mps2,
+                        tag="surge", label="Surge (m/s^2)", default_value=self.params.surge_mps2,
                         min_value=-5.0, max_value=5.0, callback=self._on_change,
                     )
                     with dpg.group(tag="advanced_controls"):
@@ -160,11 +160,11 @@ class ComplementaryApp:
                             min_value=4.0, max_value=30.0, callback=self._on_change,
                         )
                         dpg.add_slider_float(
-                            tag="gyro_noise", label="Gyro noise (°/s)", default_value=self.params.gyro_noise_dps,
+                            tag="gyro_noise", label="Gyro noise (deg/s)", default_value=self.params.gyro_noise_dps,
                             min_value=0.0, max_value=2.0, callback=self._on_change,
                         )
                         dpg.add_slider_float(
-                            tag="accel_noise", label="Accel noise (m/s²)",
+                            tag="accel_noise", label="Accel noise (m/s^2)",
                             default_value=self.params.accel_noise_mps2,
                             min_value=0.0, max_value=1.0, callback=self._on_change,
                         )

@@ -20,16 +20,16 @@ SCENARIOS: dict[str, Scenario] = {
     "level_plate": Scenario(
         id="level_plate",
         title="Level plate",
-        teaching_point="At rest and level, specific force is ≈ −g along body Z.",
+        teaching_point="At rest and level, specific force is ~ -g along body Z.",
         params=AccelParams(roll_deg=0.0, pitch_deg=0.0, noise_mps2=0.01),
-        notes="Read fx≈0, fy≈0, fz≈−9.81 m/s².",
+        notes="Read fx~0, fy~0, fz~-9.81 m/s^2.",
     ),
     "static_tilt": Scenario(
         id="static_tilt",
         title="Static tilt",
         teaching_point="Tilt maps gravity into fx/fy; arctan recovers roll/pitch when static.",
         params=AccelParams(yaw_deg=25.0, roll_deg=20.0, pitch_deg=-12.0, noise_mps2=0.02),
-        notes="Enable the 3D window — yaw rotates the cube but not the accel tilt estimate.",
+        notes="Enable the 3D window - yaw rotates the cube but not the accel tilt estimate.",
     ),
     "bias_tilts_estimate": Scenario(
         id="bias_tilts_estimate",
@@ -59,7 +59,7 @@ SCENARIOS: dict[str, Scenario] = {
     "large_pitch": Scenario(
         id="large_pitch",
         title="Large pitch",
-        teaching_point="Near vertical pitch, horizontal axes swap roles — tilt formulas get fragile.",
+        teaching_point="Near vertical pitch, horizontal axes swap roles - tilt formulas get fragile.",
         params=AccelParams(roll_deg=5.0, pitch_deg=60.0, noise_mps2=0.02),
     ),
 }

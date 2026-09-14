@@ -48,7 +48,7 @@ SCENARIOS: dict[str, Scenario] = {
         title="Two targets in range",
         teaching_point="Bandwidth sets slant-range resolution ΔR = c/(2B).",
         params=SARParams(
-            bandwidth_hz=30e6,  # ΔR ≈ 5 m
+            bandwidth_hz=30e6,  # ΔR ~ 5 m
             targets=(
                 SARPointTarget(0.0, 8000.0, rcs_db=0.0),
                 SARPointTarget(0.0, 8008.0, rcs_db=0.0),

@@ -32,13 +32,13 @@ SCENARIOS: dict[str, Scenario] = {
     "banked_turn_pose": Scenario(
         id="banked_turn_pose",
         title="Banked pose",
-        teaching_point="Combined roll and yaw — typical aircraft attitude; quaternion stays well-behaved.",
+        teaching_point="Combined roll and yaw - typical aircraft attitude; quaternion stays well-behaved.",
         params=AttitudeParams(yaw_deg=25.0, pitch_deg=5.0, roll_deg=35.0),
     ),
     "gimbal_lock_scan": Scenario(
         id="gimbal_lock_scan",
         title="Gimbal-lock scan",
-        teaching_point="Near pitch ±90°, Euler yaw/roll become coupled — extraction is singular.",
+        teaching_point="Near pitch +/-90 deg, Euler yaw/roll become coupled - extraction is singular.",
         params=AttitudeParams(
             yaw_deg=30.0,
             pitch_deg=0.0,
@@ -46,12 +46,12 @@ SCENARIOS: dict[str, Scenario] = {
             animate_pitch=True,
             pitch_scan_deg=89.0,
         ),
-        notes="Watch extracted yaw/roll jump as pitch crosses ±90°.",
+        notes="Watch extracted yaw/roll jump as pitch crosses +/-90 deg.",
     ),
     "quat_roundtrip": Scenario(
         id="quat_roundtrip",
         title="Quaternion round-trip",
-        teaching_point="Euler → quaternion → DCM → Euler recovers the same attitude away from singularities.",
+        teaching_point="Euler -> quaternion -> DCM -> Euler recovers the same attitude away from singularities.",
         params=AttitudeParams(yaw_deg=-40.0, pitch_deg=18.0, roll_deg=-12.0),
     ),
     "steep_pitch": Scenario(

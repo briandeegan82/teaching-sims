@@ -26,7 +26,7 @@ SCENARIOS: dict[str, Scenario] = {
             targets=(MovingTarget(3500.0, 35.0, snr_db=28.0),),
             mti_canceller=False,
         ),
-        notes="You should see one bright blob — not a noisy field. Read R and v from it.",
+        notes="You should see one bright blob - not a noisy field. Read R and v from it.",
     ),
     "clutter_masks_target": Scenario(
         id="clutter_masks_target",
@@ -71,7 +71,7 @@ SCENARIOS: dict[str, Scenario] = {
     "doppler_ambiguity": Scenario(
         id="doppler_ambiguity",
         title="Doppler ambiguity (PRF fold)",
-        teaching_point="Velocities outside ±v_unamb wrap into the PRF window.",
+        teaching_point="Velocities outside +/-v_unamb wrap into the PRF window.",
         params=PulseDopplerParams(
             frequency_hz=10e9,
             pri_s=200e-6,
@@ -79,7 +79,7 @@ SCENARIOS: dict[str, Scenario] = {
             clutter_enabled=False,
             targets=(MovingTarget(2500.0, 120.0, snr_db=28.0),),
         ),
-        notes="True 120 m/s appears near a folded velocity — check the annotation.",
+        notes="True 120 m/s appears near a folded velocity - check the annotation.",
     ),
     "cpi_resolution": Scenario(
         id="cpi_resolution",

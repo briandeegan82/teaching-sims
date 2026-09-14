@@ -25,14 +25,14 @@ SCENARIOS: dict[str, Scenario] = {
             waveform=FMCWWaveform.SAWTOOTH,
             targets=(FMCWTarget(50.0, 0.0, snr_db=28.0),),
         ),
-        notes="Read the spectrum peak and convert fb → R.",
+        notes="Read the spectrum peak and convert fb -> R.",
     ),
     "two_range_cells": Scenario(
         id="two_range_cells",
         title="Range resolution (two targets)",
         teaching_point="Targets closer than c/(2B) merge in the range FFT.",
         params=FMCWParams(
-            bandwidth_hz=100e6,  # ΔR ≈ 1.5 m
+            bandwidth_hz=100e6,  # ΔR ~ 1.5 m
             targets=(
                 FMCWTarget(40.0, 0.0, snr_db=26.0),
                 FMCWTarget(41.0, 0.0, snr_db=26.0),
@@ -42,7 +42,7 @@ SCENARIOS: dict[str, Scenario] = {
     ),
     "sawtooth_coupling": Scenario(
         id="sawtooth_coupling",
-        title="Sawtooth range–Doppler coupling",
+        title="Sawtooth range-Doppler coupling",
         teaching_point="On a sawtooth, Doppler shifts the beat so naive R = c fb/(2S) is biased.",
         params=FMCWParams(
             waveform=FMCWWaveform.SAWTOOTH,
@@ -54,7 +54,7 @@ SCENARIOS: dict[str, Scenario] = {
     "triangle_decouple": Scenario(
         id="triangle_decouple",
         title="Triangle up/down decoupling",
-        teaching_point="Up and down beats recover both R and v: fb± = 2SR/c ± 2v/λ.",
+        teaching_point="Up and down beats recover both R and v: fb+/- = 2SR/c +/- 2v/λ.",
         params=FMCWParams(
             waveform=FMCWWaveform.TRIANGLE,
             targets=(FMCWTarget(40.0, 30.0, snr_db=26.0),),
@@ -64,7 +64,7 @@ SCENARIOS: dict[str, Scenario] = {
     ),
     "range_doppler_map": Scenario(
         id="range_doppler_map",
-        title="FMCW range–Doppler map",
+        title="FMCW range-Doppler map",
         teaching_point="A CPI of chirps + 2D FFT yields the automotive-style RD map.",
         params=FMCWParams(
             waveform=FMCWWaveform.SAWTOOTH,
@@ -83,7 +83,7 @@ SCENARIOS: dict[str, Scenario] = {
         params=FMCWParams(
             bandwidth_hz=200e6,
             chirp_time_s=50e-6,
-            sample_rate_hz=2e6,  # low IF sampling → small R_max
+            sample_rate_hz=2e6,  # low IF sampling -> small R_max
             targets=(FMCWTarget(120.0, 0.0, snr_db=28.0),),
             n_chirps=32,
         ),

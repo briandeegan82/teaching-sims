@@ -207,7 +207,7 @@ class SARApp:
         dpg.set_axis_limits("unf_x", float(r_d[0]), float(r_d[-1]))
         dpg.set_axis_limits("unf_y", float(x_d[0]), float(x_d[-1]))
 
-        # Range cut through x≈0
+        # Range cut through x~0
         i0 = int(np.argmin(np.abs(x)))
         dpg.set_value("range_cut", _fxy(r, focused[i0, :]))
         dpg.set_axis_limits("rc_x", float(r_d[0]), float(r_d[-1]))
@@ -235,8 +235,8 @@ class SARApp:
             (
                 f"v={p.velocity_mps:.0f} m/s   h={p.altitude_m:.0f} m   "
                 f"B={p.bandwidth_hz/1e6:.0f} MHz   N={p.n_pulses}   PRF={p.prf_hz:.0f} Hz\n"
-                f"ΔR≈{out['range_resolution_m']:.2f} m   Δx≈{out['azimuth_resolution_m']:.2f} m   "
-                f"L_sa≈{out['synthetic_aperture_m']:.0f} m   R0≈{out['R0_m']:.0f} m"
+                f"ΔR~{out['range_resolution_m']:.2f} m   Δx~{out['azimuth_resolution_m']:.2f} m   "
+                f"L_sa~{out['synthetic_aperture_m']:.0f} m   R0~{out['R0_m']:.0f} m"
             ),
         )
         dpg.set_value("banner_title", self._title)
@@ -247,7 +247,7 @@ class SARApp:
 
     def run(self) -> None:
         dpg.create_context()
-        dpg.create_viewport(title="Teaching Sims — Stripmap SAR", width=1500, height=980)
+        dpg.create_viewport(title="Teaching Sims - Stripmap SAR", width=1500, height=980)
 
         with dpg.theme() as global_theme:
             with dpg.theme_component(dpg.mvAll):
@@ -363,7 +363,7 @@ class SARApp:
                         )
                         dpg.add_slider_float(
                             tag="tp_us",
-                            label="Pulse width (µs)",
+                            label="Pulse width (us)",
                             default_value=self.params.pulse_width_s * 1e6,
                             min_value=1.0,
                             max_value=20.0,
@@ -464,7 +464,7 @@ class SARApp:
                                 )
 
                     with dpg.group(horizontal=True):
-                        with dpg.plot(label="Range cut (x≈0)", height=240, width=560):
+                        with dpg.plot(label="Range cut (x~0)", height=240, width=560):
                             dpg.add_plot_axis(dpg.mvXAxis, label="slant range (m)", tag="rc_x")
                             with dpg.plot_axis(dpg.mvYAxis, label="dB", tag="rc_y"):
                                 dpg.add_line_series([0.0], [0.0], label="cut", tag="range_cut")

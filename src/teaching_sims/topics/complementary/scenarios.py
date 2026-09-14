@@ -20,19 +20,19 @@ SCENARIOS: dict[str, Scenario] = {
     "balanced_sine": Scenario(
         id="balanced_sine",
         title="Balanced sine pitch",
-        teaching_point="α≈0.98: gyro tracks fast motion; accel quietly removes bias drift.",
+        teaching_point="alpha~0.98: gyro tracks fast motion; accel quietly removes bias drift.",
         params=ComplementaryParams(alpha=0.98, gyro_bias_dps=0.8, surge_mps2=0.0),
     ),
     "trust_gyro": Scenario(
         id="trust_gyro",
         title="Trust the gyro",
-        teaching_point="α→1 ignores accel: fast and smooth, but bias makes angle walk away.",
+        teaching_point="alpha->1 ignores accel: fast and smooth, but bias makes angle walk away.",
         params=ComplementaryParams(alpha=0.999, gyro_bias_dps=1.2),
     ),
     "trust_accel": Scenario(
         id="trust_accel",
         title="Trust the accelerometer",
-        teaching_point="α→0 follows accel tilt: no gyro drift, but noisy and laggy on fast motion.",
+        teaching_point="alpha->0 follows accel tilt: no gyro drift, but noisy and laggy on fast motion.",
         params=ComplementaryParams(alpha=0.5, gyro_bias_dps=1.0, accel_noise_mps2=0.4),
     ),
     "surge_spoofs_accel": Scenario(
@@ -46,18 +46,18 @@ SCENARIOS: dict[str, Scenario] = {
             surge_mps2=2.0,
             gyro_bias_dps=0.2,
         ),
-        notes="Raise α to trust gyro more during the surge.",
+        notes="Raise alpha to trust gyro more during the surge.",
     ),
     "step_pitch": Scenario(
         id="step_pitch",
         title="Step pitch",
-        teaching_point="A step stresses the filter: watch overshoot vs lag as you change α.",
+        teaching_point="A step stresses the filter: watch overshoot vs lag as you change alpha.",
         params=ComplementaryParams(motion=PitchMotion.STEP, amp_deg=30.0, alpha=0.97),
     ),
     "quiet_sensors": Scenario(
         id="quiet_sensors",
         title="Quiet sensors",
-        teaching_point="With tiny noise/bias, all three estimators look similar — then turn errors back on.",
+        teaching_point="With tiny noise/bias, all three estimators look similar - then turn errors back on.",
         params=ComplementaryParams(
             gyro_bias_dps=0.0,
             gyro_noise_dps=0.02,
