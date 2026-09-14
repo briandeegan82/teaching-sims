@@ -7,7 +7,6 @@ import sys
 from collections.abc import Callable
 
 
-# Canonical topic id -> (aliases, loader)
 def _load_phased_array():
     from teaching_sims.topics.phased_array.scenarios import list_scenarios
     from teaching_sims.ui.desktop.phased_array_app import run_app
@@ -57,6 +56,49 @@ def _load_sar():
     return list_scenarios, run_app
 
 
+def _load_accelerometer():
+    from teaching_sims.topics.accelerometer.scenarios import list_scenarios
+    from teaching_sims.ui.desktop.accelerometer_app import run_app
+
+    return list_scenarios, run_app
+
+
+def _load_gyroscope():
+    from teaching_sims.topics.gyroscope.scenarios import list_scenarios
+    from teaching_sims.ui.desktop.gyroscope_app import run_app
+
+    return list_scenarios, run_app
+
+
+def _load_attitude():
+    from teaching_sims.topics.attitude.scenarios import list_scenarios
+    from teaching_sims.ui.desktop.attitude_app import run_app
+
+    return list_scenarios, run_app
+
+
+def _load_complementary():
+    from teaching_sims.topics.complementary.scenarios import list_scenarios
+    from teaching_sims.ui.desktop.complementary_app import run_app
+
+    return list_scenarios, run_app
+
+
+def _load_magnetometer():
+    from teaching_sims.topics.magnetometer.scenarios import list_scenarios
+    from teaching_sims.ui.desktop.magnetometer_app import run_app
+
+    return list_scenarios, run_app
+
+
+def _load_ins():
+    from teaching_sims.topics.ins.scenarios import list_scenarios
+    from teaching_sims.ui.desktop.ins_app import run_app
+
+    return list_scenarios, run_app
+
+
+# Canonical topic id -> (aliases, loader)
 TOPICS: dict[str, tuple[tuple[str, ...], Callable]] = {
     "phased-array": (("phased-array", "phased_array"), _load_phased_array),
     "beamforming": (("beamforming", "beamformer"), _load_beamforming),
@@ -65,17 +107,41 @@ TOPICS: dict[str, tuple[tuple[str, ...], Callable]] = {
     "cfar": (("cfar", "detection"), _load_cfar),
     "fmcw": (("fmcw", "automotive"), _load_fmcw),
     "sar": (("sar", "stripmap"), _load_sar),
+    "accelerometer": (("accelerometer", "accel"), _load_accelerometer),
+    "gyroscope": (("gyroscope", "gyro"), _load_gyroscope),
+    "attitude": (("attitude", "rotations", "dcm"), _load_attitude),
+    "complementary": (("complementary", "comp-filter", "ahrs-lite"), _load_complementary),
+    "magnetometer": (("magnetometer", "mag", "heading"), _load_magnetometer),
+    "ins": (("ins", "dead-reckoning", "strapdown"), _load_ins),
 }
 
 ALIAS_TO_TOPIC = {
     alias: canonical for canonical, (aliases, _) in TOPICS.items() for alias in aliases
 }
 
+RADAR_TOPICS = (
+    "phased-array",
+    "beamforming",
+    "pulsed-ranging",
+    "pulse-doppler",
+    "cfar",
+    "fmcw",
+    "sar",
+)
+IMU_TOPICS = (
+    "accelerometer",
+    "gyroscope",
+    "attitude",
+    "complementary",
+    "magnetometer",
+    "ins",
+)
+
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="teaching-sims",
-        description="Interactive radar teaching simulations (Dear PyGui).",
+        description="Interactive radar and IMU teaching simulations (Dear PyGui).",
     )
     sub = p.add_subparsers(dest="command", required=True)
 
@@ -97,11 +163,13 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def _print_topics() -> None:
-    print("Available demos:\n")
-    for name in TOPICS:
+    print("Radar track:\n")
+    for name in RADAR_TOPICS:
         print(f"  teaching-sims demo {name}")
-        print(f"  teaching-sims demo {name} --list-scenarios")
-        print()
+    print("\nIMU track:\n")
+    for name in IMU_TOPICS:
+        print(f"  teaching-sims demo {name}")
+    print("\nList scenarios: teaching-sims demo <topic> --list-scenarios")
     print("Tutorials: see tutorials/README.md")
 
 

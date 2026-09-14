@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "teaching-sims"
-version = "0.2.0"
-description = "Interactive Dear PyGui radar teaching simulations (arrays through SAR)."
+version = "0.3.0"
+description = "Interactive Dear PyGui teaching simulations for radar and IMU/navigation."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -14,6 +14,8 @@ dependencies = [
   "numpy>=1.24",
   "scipy>=1.11",
   "dearpygui>=1.11",
+  "matplotlib>=3.7",
+  "PySide6>=6.5",
 ]
 
 [project.optional-dependencies]
