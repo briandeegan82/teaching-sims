@@ -4,6 +4,9 @@ from __future__ import annotations
 
 import dearpygui.dearpygui as dpg
 
+# Empty format disables ImPlot cell-value text overlays on heatmaps.
+HEAT_FORMAT = ""
+
 
 def fxy(xs, ys):
     return [[float(v) for v in xs], [float(v) for v in ys]]

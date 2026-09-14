@@ -12,6 +12,7 @@ from teaching_sims.topics.pulse_doppler.physics import (
     range_doppler_map,
 )
 from teaching_sims.topics.pulse_doppler.scenarios import SCENARIOS, get_scenario
+from teaching_sims.ui.desktop.plot_utils import HEAT_FORMAT
 
 
 RD_ROWS = 64   # Doppler display bins
@@ -431,6 +432,7 @@ class PulseDopplerApp:
                                 scale_max=1.0,
                                 bounds_min=(0.0, -50.0),
                                 bounds_max=(15.0, 50.0),
+                                format=HEAT_FORMAT,
                                 tag="rd_heat",
                             )
                             dpg.add_line_series(

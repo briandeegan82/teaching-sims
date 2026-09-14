@@ -19,6 +19,7 @@ Each script activates `.venv` and starts a demo. From the repo root:
 ```bash
 ./demos/accelerometer.sh --scenario static_tilt
 ./demos/gyroscope.sh --scenario bias_ramp
+# tip: enable "Show 3D heading window" to compare truth vs gyro cubes
 ./demos/attitude.sh --scenario gimbal_lock_scan
 ./demos/complementary.sh --scenario balanced_sine
 ./demos/magnetometer.sh --scenario pitched_needs_tc

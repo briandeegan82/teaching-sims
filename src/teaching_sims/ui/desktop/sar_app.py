@@ -7,6 +7,7 @@ import numpy as np
 
 from teaching_sims.topics.sar.physics import SARParams, SARPointTarget, process_sar
 from teaching_sims.topics.sar.scenarios import SCENARIOS, get_scenario
+from teaching_sims.ui.desktop.plot_utils import HEAT_FORMAT
 
 
 IMG_ROWS = 160  # azimuth display
@@ -446,6 +447,7 @@ class SARApp:
                                     scale_max=1.0,
                                     bounds_min=(9000.0, -100.0),
                                     bounds_max=(9800.0, 100.0),
+                                    format=HEAT_FORMAT,
                                     tag="focused_heat",
                                 )
 
@@ -460,6 +462,7 @@ class SARApp:
                                     scale_max=1.0,
                                     bounds_min=(9000.0, -100.0),
                                     bounds_max=(9800.0, 100.0),
+                                    format=HEAT_FORMAT,
                                     tag="unfocused_heat",
                                 )
 

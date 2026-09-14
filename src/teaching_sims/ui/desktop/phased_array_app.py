@@ -20,6 +20,7 @@ from teaching_sims.topics.phased_array.physics import (
     wavefront_field,
 )
 from teaching_sims.topics.phased_array.scenarios import SCENARIOS, get_scenario
+from teaching_sims.ui.desktop.plot_utils import HEAT_FORMAT
 
 
 THETA = np.linspace(-90.0, 90.0, 721)
@@ -638,6 +639,7 @@ class PhasedArrayApp:
                                     scale_max=1.0,
                                     bounds_min=(0.0, 0.0),
                                     bounds_max=(float(WAVE_NX), float(WAVE_NZ)),
+                                    format=HEAT_FORMAT,
                                     tag="wave_heat",
                                 )
 

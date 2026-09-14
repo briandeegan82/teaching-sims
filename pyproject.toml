@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "teaching-sims"
-version = "0.3.0"
+version = "0.3.1"
 description = "Interactive Dear PyGui teaching simulations for radar and IMU/navigation."
 readme = "README.md"
 requires-python = ">=3.10"

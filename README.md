@@ -58,6 +58,8 @@ Shell shortcuts live in [`demos/`](demos/README.md).
 - Use **Lecture scenarios** as the talk track; sliders are for exploration.
 - Radar angles are from **broadside** (\(0^\circ\) = array / look normal).
 - IMU attitudes use aerospace **ZYX** yaw–pitch–roll; gravity level reads \(f_z\approx-g\).
+- Optional **3D attitude windows** (accelerometer / gyroscope) need `matplotlib` + `PySide6`
+  (already in package dependencies). Checkbox in the left panel opens an external Qt window.
 
 ## Layout
 
@@ -66,6 +68,7 @@ src/teaching_sims/
   core/           shared constants (RF + IMU)
   topics/*/       physics + scenarios per demo
   ui/desktop/     Dear PyGui apps
+  ui/external/    optional matplotlib 3D viewers
   ui/cli.py       teaching-sims entry point
 tutorials/        principles + walkthroughs
 tests/            physics unit tests
