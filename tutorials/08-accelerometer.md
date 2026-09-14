@@ -1,7 +1,7 @@
 # Tutorial 08 — Accelerometers & specific force
 
 **Demo:** `teaching-sims demo accelerometer`  
-**Prerequisites:** none  
+**Prerequisites:** optional [14 — MEMS comb-drive](14-mems-accel.md) for sensor internals  
 **Goal:** understand what an accelerometer measures, how static tilt is recovered, and why bias / linear accel / vibration spoil naïve attitude
 
 ---

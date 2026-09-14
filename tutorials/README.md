@@ -20,6 +20,7 @@ can run in lecture or self-paced lab.
 
 | Tutorial | Demo command | Time (approx.) |
 | --- | --- | --- |
+| [14 — MEMS comb-drive sensing](14-mems-accel.md) | `teaching-sims demo mems-accel` | 30–45 min |
 | [08 — Accelerometers](08-accelerometer.md) | `teaching-sims demo accelerometer` | 35–50 min |
 | [09 — Gyroscopes](09-gyroscope.md) | `teaching-sims demo gyroscope` | 35–50 min |
 | [10 — Attitude representations](10-attitude.md) | `teaching-sims demo attitude` | 35–50 min |

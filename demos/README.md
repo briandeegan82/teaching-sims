@@ -17,6 +17,7 @@ Each script activates `.venv` and starts a demo. From the repo root:
 ### IMU
 
 ```bash
+./demos/mems-accel.sh --scenario impulse_ring
 ./demos/accelerometer.sh --scenario static_tilt
 ./demos/gyroscope.sh --scenario bias_ramp
 # tip: enable "Show 3D heading window" to compare truth vs gyro cubes

@@ -11,6 +11,7 @@ def test_list_topics(capsys):
     assert "phased-array" in out
     assert "sar" in out
     assert "accelerometer" in out
+    assert "mems-accel" in out
     assert "ins" in out
     assert "IMU track" in out
 
@@ -31,3 +32,10 @@ def test_list_scenarios_accel_alias(capsys):
     assert main(["demo", "accel", "--list-scenarios"]) == 0
     out = capsys.readouterr().out
     assert "static_tilt" in out
+
+
+def test_list_scenarios_mems_accel(capsys):
+    assert main(["demo", "mems-accel", "--list-scenarios"]) == 0
+    out = capsys.readouterr().out
+    assert "impulse_ring" in out
+    assert "output_bias" in out

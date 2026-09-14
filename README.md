@@ -37,12 +37,13 @@ pytest
 
 | # | Demo | Tutorial | Launch |
 | --- | --- | --- | --- |
-| 8 | Accelerometer / tilt | [08](tutorials/08-accelerometer.md) | `teaching-sims demo accelerometer` |
-| 9 | Gyroscope / integration | [09](tutorials/09-gyroscope.md) | `teaching-sims demo gyroscope` |
-| 10 | Attitude (Euler/DCM/quat) | [10](tutorials/10-attitude.md) | `teaching-sims demo attitude` |
-| 11 | Complementary filter | [11](tutorials/11-complementary.md) | `teaching-sims demo complementary` |
-| 12 | Magnetometer / heading | [12](tutorials/12-magnetometer.md) | `teaching-sims demo magnetometer` |
-| 13 | Strapdown INS | [13](tutorials/13-ins.md) | `teaching-sims demo ins` |
+| 8 | MEMS comb-drive sensing | [14](tutorials/14-mems-accel.md) | `teaching-sims demo mems-accel` |
+| 9 | Accelerometer / tilt | [08](tutorials/08-accelerometer.md) | `teaching-sims demo accelerometer` |
+| 10 | Gyroscope / integration | [09](tutorials/09-gyroscope.md) | `teaching-sims demo gyroscope` |
+| 11 | Attitude (Euler/DCM/quat) | [10](tutorials/10-attitude.md) | `teaching-sims demo attitude` |
+| 12 | Complementary filter | [11](tutorials/11-complementary.md) | `teaching-sims demo complementary` |
+| 13 | Magnetometer / heading | [12](tutorials/12-magnetometer.md) | `teaching-sims demo magnetometer` |
+| 14 | Strapdown INS | [13](tutorials/13-ins.md) | `teaching-sims demo ins` |
 
 List scenarios for any demo:
 
