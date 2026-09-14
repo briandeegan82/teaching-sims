@@ -54,7 +54,7 @@ SCENARIOS: dict[str, Scenario] = {
     "angle_random_walk": Scenario(
         id="angle_random_walk",
         title="Angle random walk",
-        teaching_point="White rate noise integrates to a random-walk angle error (grows like sqrt(t))..",
+        teaching_point="White rate noise integrates to a random-walk angle error (grows like sqrt(t)).",
         params=GyroParams(
             profile=MotionProfile.CONSTANT,
             rate_dps=0.0,
