@@ -40,6 +40,30 @@ def _stdin_reader(queue: Queue) -> None:
         queue.put({"quit": True})
 
 
+def _apply_message(ax, msg: dict) -> None:
+    from teaching_sims.ui.external.cube_geometry import (
+        draw_cube_attitude,
+        draw_gyro_heading_compare,
+    )
+
+    mode = msg.get("mode", "attitude")
+    if mode == "gyro_compare":
+        draw_gyro_heading_compare(
+            ax,
+            float(msg["yaw_true"]),
+            float(msg["yaw_est"]),
+            t_s=float(msg["t_s"]) if "t_s" in msg else None,
+            err_deg=float(msg["err_deg"]) if "err_deg" in msg else None,
+        )
+    else:
+        draw_cube_attitude(
+            ax,
+            float(msg["yaw"]),
+            float(msg["pitch"]),
+            float(msg["roll"]),
+        )
+
+
 def main() -> int:
     _configure_backend()
     import matplotlib.pyplot as plt
@@ -48,9 +72,8 @@ def main() -> int:
 
     fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
     if fig.canvas.manager is not None:
-        fig.canvas.manager.set_window_title("Teaching Sims — body attitude (3D)")
+        fig.canvas.manager.set_window_title("Teaching Sims — 3D attitude")
 
-    # Safe defaults so the first paint is valid before any parent message arrives.
     draw_cube_attitude(ax, 0.0, 0.0, 0.0)
 
     queue: Queue = Queue()
@@ -67,12 +90,7 @@ def main() -> int:
                 if msg.get("quit"):
                     plt.close(fig)
                     return
-                draw_cube_attitude(
-                    ax,
-                    float(msg["yaw"]),
-                    float(msg["pitch"]),
-                    float(msg["roll"]),
-                )
+                _apply_message(ax, msg)
                 fig.canvas.draw_idle()
         except Empty:
             pass
@@ -81,7 +99,6 @@ def main() -> int:
     timer.add_callback(_on_timer)
     timer.start()
 
-    # Block on the GUI main loop so mouse clicks / rotation stay on the Qt thread.
     plt.show(block=True)
     return 0
 

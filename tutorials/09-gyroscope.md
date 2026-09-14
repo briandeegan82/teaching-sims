@@ -32,6 +32,8 @@ White rate noise with density \(\sigma\) (often quoted in °/√h or °/√s) in
 | Angle plot | Truth vs integrated estimate |
 | Error plot | \(\hat\theta-\theta\) |
 | Compensate bias | Subtract known bias before integrate |
+| 3D window | Dark cube = truth heading; orange = gyro \(\int\omega\) |
+| View time / Play | Scrub or animate the 3D mismatch over the run |
 
 ---
 
@@ -46,16 +48,19 @@ White rate noise with density \(\sigma\) (often quoted in °/√h or °/√s) in
 
 1. Load **Bias → angle ramp**.
 2. After motion stops, error keeps climbing.
+3. Enable **Show 3D heading window** and press **Play** — truth (dark) stops turning; orange gyro cube keeps rotating.
 
 ### Experiment C — Compensation (~3 min)
 
 1. Load **Bias compensated**.
 2. Same bias, error collapses.
+3. In 3D, the two cubes stay aligned through the turn.
 
 ### Experiment D — ARW (~5 min)
 
 1. Load **Angle random walk** (zero true rate).
 2. Angle wanders; resample to see new paths.
+3. Scrub **View time** in 3D — truth stays fixed; orange heading wanders.
 
 ### Experiment E — Combined (~5 min)
 

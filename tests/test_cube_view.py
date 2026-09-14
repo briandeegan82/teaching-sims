@@ -25,6 +25,20 @@ def test_roll_tilts_cube():
     assert not np.allclose(v0, v1)
 
 
+def test_gyro_compare_draws_without_gui():
+    """Smoke-test the teaching compare drawer with a non-interactive backend."""
+    import matplotlib
+
+    matplotlib.use("Agg", force=True)
+    import matplotlib.pyplot as plt
+
+    from teaching_sims.ui.external.cube_geometry import draw_gyro_heading_compare
+
+    fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+    draw_gyro_heading_compare(ax, 10.0, 35.0, t_s=4.0, err_deg=25.0)
+    plt.close(fig)
+
+
 def test_view_disabled_does_not_require_matplotlib():
     view = CubeAttitudeView()
     view.set_enabled(False)

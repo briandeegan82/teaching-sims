@@ -12,6 +12,7 @@ import time
 from teaching_sims.ui.external.cube_geometry import (
     cube_vertices_body,
     draw_cube_attitude,
+    draw_gyro_heading_compare,
     rotate_body_to_plot,
 )
 
@@ -20,6 +21,7 @@ __all__ = [
     "cube_vertices_body",
     "rotate_body_to_plot",
     "draw_cube_attitude",
+    "draw_gyro_heading_compare",
 ]
 
 
@@ -130,19 +132,45 @@ class CubeAttitudeView:
         force: bool = False,
     ) -> None:
         del force
+        self._send(
+            {
+                "mode": "attitude",
+                "yaw": float(yaw_deg),
+                "pitch": float(pitch_deg),
+                "roll": float(roll_deg),
+            }
+        )
+
+    def update_gyro_compare(
+        self,
+        yaw_true_deg: float,
+        yaw_est_deg: float,
+        *,
+        t_s: float | None = None,
+        err_deg: float | None = None,
+    ) -> None:
+        """True vs gyro-integrated heading about Down (teaching view)."""
+        msg: dict[str, float | str] = {
+            "mode": "gyro_compare",
+            "yaw_true": float(yaw_true_deg),
+            "yaw_est": float(yaw_est_deg),
+        }
+        if t_s is not None:
+            msg["t_s"] = float(t_s)
+        if err_deg is not None:
+            msg["err_deg"] = float(err_deg)
+        self._send(msg)
+
+    def _send(self, payload: dict) -> None:
         if not self._enabled:
             return
         if self._proc is None or self._proc.poll() is not None:
             self.last_error = "3D viewer process is not running"
             self._enabled = False
             return
-
-        msg = json.dumps(
-            {"yaw": float(yaw_deg), "pitch": float(pitch_deg), "roll": float(roll_deg)}
-        ) + "\n"
         try:
             assert self._proc.stdin is not None
-            self._proc.stdin.write(msg)
+            self._proc.stdin.write(json.dumps(payload) + "\n")
             self._proc.stdin.flush()
             self.last_error = None
         except (BrokenPipeError, OSError) as exc:

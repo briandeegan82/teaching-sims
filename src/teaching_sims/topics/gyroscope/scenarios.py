@@ -38,7 +38,7 @@ SCENARIOS: dict[str, Scenario] = {
             arw_deg_per_sqrt_s=0.0,
             compensate_bias=False,
         ),
-        notes="Enable bias compensation to reset the ramp.",
+        notes="Enable bias compensation to reset the ramp. In 3D, truth stops; the gyro cube keeps turning.",
     ),
     "bias_compensated": Scenario(
         id="bias_compensated",
