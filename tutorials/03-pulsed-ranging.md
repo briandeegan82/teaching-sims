@@ -178,7 +178,6 @@ would you choose instead?
 
 ## 6. Where to go next
 
-Natural extensions in this repo’s roadmap: **SAR / FFT imaging** (range +
-azimuth via Doppler/history), and coupling a pulsed ranger with the
-beamforming demo (angle + range). For now, you have the three pillars of many
-intro radar courses: *steer*, *adapt*, and *range*.
+Continue with [15 — Target returns](15-target-returns.md) to see how object
+**size and shape** set echo strength (RCS) on the A-scope, then
+[04 — Pulse-Doppler](04-pulse-doppler.md) for moving targets.

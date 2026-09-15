@@ -56,6 +56,13 @@ def _load_sar():
     return list_scenarios, run_app
 
 
+def _load_target_returns():
+    from teaching_sims.topics.target_returns.scenarios import list_scenarios
+    from teaching_sims.ui.desktop.target_returns_app import run_app
+
+    return list_scenarios, run_app
+
+
 def _load_accelerometer():
     from teaching_sims.topics.accelerometer.scenarios import list_scenarios
     from teaching_sims.ui.desktop.accelerometer_app import run_app
@@ -114,6 +121,7 @@ TOPICS: dict[str, tuple[tuple[str, ...], Callable]] = {
     "cfar": (("cfar", "detection"), _load_cfar),
     "fmcw": (("fmcw", "automotive"), _load_fmcw),
     "sar": (("sar", "stripmap"), _load_sar),
+    "target-returns": (("target-returns", "target_returns", "rcs", "echo-returns"), _load_target_returns),
     "accelerometer": (("accelerometer", "accel"), _load_accelerometer),
     "gyroscope": (("gyroscope", "gyro"), _load_gyroscope),
     "attitude": (("attitude", "rotations", "dcm"), _load_attitude),
@@ -131,6 +139,7 @@ RADAR_TOPICS = (
     "phased-array",
     "beamforming",
     "pulsed-ranging",
+    "target-returns",
     "pulse-doppler",
     "cfar",
     "fmcw",

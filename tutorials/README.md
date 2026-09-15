@@ -11,6 +11,7 @@ can run in lecture or self-paced lab.
 | [01 — Phased-array antennas](01-phased-array.md) | `teaching-sims demo phased-array` | 45–60 min |
 | [02 — Digital beamforming](02-beamforming.md) | `teaching-sims demo beamforming` | 45–60 min |
 | [03 — Pulsed radar ranging](03-pulsed-ranging.md) | `teaching-sims demo pulsed-ranging` | 40–55 min |
+| [15 — Target returns (RCS)](15-target-returns.md) | `teaching-sims demo target-returns` | 35–50 min |
 | [04 — Pulse-Doppler / MTI](04-pulse-doppler.md) | `teaching-sims demo pulse-doppler` | 40–55 min |
 | [05 — CFAR detection](05-cfar.md) | `teaching-sims demo cfar` | 35–50 min |
 | [06 — FMCW radar](06-fmcw.md) | `teaching-sims demo fmcw` | 40–55 min |

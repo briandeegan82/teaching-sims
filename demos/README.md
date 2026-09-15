@@ -8,6 +8,7 @@ Each script activates `.venv` and starts a demo. From the repo root:
 ./demos/phased-array.sh
 ./demos/beamforming.sh --scenario mvdr_adaptive_null
 ./demos/pulsed-ranging.sh --scenario lfm_compression
+./demos/target-returns.sh --scenario plate_vs_sphere
 ./demos/pulse-doppler.sh --scenario mti_reveals_target
 ./demos/cfar.sh --scenario fixed_vs_cfar_clutter
 ./demos/fmcw.sh --scenario triangle_decouple
